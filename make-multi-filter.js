@@ -1,3 +1,5 @@
+'use strict';
+
 function MakeMultiFilter(originalArray) {
     var currentArray = originalArray;
 
