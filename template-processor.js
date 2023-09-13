@@ -8,14 +8,16 @@ class TemplateProcessor {
     fillIn(dict) {
         let placeholder;
         let placeholderName;
-        while (/\{{2}.*\}{2}/.test(this.template)) {
-            placeholder = /\{{2}.*\}{2}/.exec(this.template)[0];
+        let filledTemplate = this.template;
+        while (/\{{2}\S*}{2}/.test(filledTemplate)) {
+            placeholder = /\{{2}\S*}{2}/.exec(filledTemplate)[0];
             placeholderName = placeholder.slice(2, placeholder.length - 2);
             if (placeholderName in dict) {
-                this.template = this.template.replace(placeholder, dict[placeholderName]);
+                filledTemplate = filledTemplate.replace(placeholder, dict[placeholderName]);
             } else {
-                this.template = this.template.replace(placeholder, "");
+                filledTemplate = filledTemplate.replace(placeholder, "");
             }
         }
+        return filledTemplate;
     }
 }
