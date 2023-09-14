@@ -21,7 +21,7 @@ function arraysAreTheSame(a1, a2) {
   if (!Array.isArray(a1) || !Array.isArray(a2) || (a1.length !== a2.length)) {
     return false;
   }
-  for (var i = 0; i < a1.length; i += 1) {
+  for (let i = 0; i < a1.length; i += 1) {
     if (a1[i] !== a2[i]) {
       return false;
     }
@@ -35,23 +35,23 @@ if (typeof MakeMultiFilter !== 'function') {
   console.error('MakeMultiFilter is not a function', typeof MakeMultiFilter);
   p1Message = 'FAILURE';
 } else {
-  var originalArray = [1, 2, 3];
-  var filterFunc = window.MakeMultiFilter(originalArray);
+  let originalArray = [1, 2, 3];
+  let filterFunc = window.MakeMultiFilter(originalArray);
 
-  var secondArray = [1, 2, 3, 4];
-  var filterFuncTwo = window.MakeMultiFilter(secondArray);
+  let secondArray = [1, 2, 3, 4];
+  let filterFuncTwo = window.MakeMultiFilter(secondArray);
 
   if (typeof filterFunc !== 'function') {
     console.error('MakeMultiFilter does not return a function', filterFunc);
     p1Message = 'FAILURE';
   } else {
-    var result = filterFunc();
+    let result = filterFunc();
     if (!arraysAreTheSame([1, 2, 3], result)) {
       console.error('filter function with no args does not return the original array', result);
       p1Message = 'FAILURE';
     }
 
-    var callbackPerformed = false;
+    let callbackPerformed = false;
     result = filterFunc(function (item) {
       return item !== 2;
     }, function (callbackResult) {
