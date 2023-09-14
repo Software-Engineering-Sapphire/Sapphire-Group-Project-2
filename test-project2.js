@@ -111,11 +111,11 @@ if (typeof TemplateProcessor !== 'function') {
   console.error('TemplateProcessor is not a function', typeof TemplateProcessor);
   p2Message = 'FAILURE';
 } else {
-  var template = 'My favorite month is {{month}} but not the day {{day}} or the year {{year}}';
-  var dateTemplate = new TemplateProcessor(template);
+  let template = 'My favorite month is {{month}} but not the day {{day}} or the year {{year}}';
+  let dateTemplate = new TemplateProcessor(template);
 
-  var dictionary = { month: 'July', day: '1', year: '2016' };
-  var str = dateTemplate.fillIn(dictionary);
+  let dictionary = { month: 'July', day: '1', year: '2016' };
+  let str = dateTemplate.fillIn(dictionary);
 
   if (str !== 'My favorite month is July but not the day 1 or the year 2016') {
     console.error('TemplateProcessor didn\'t work');
